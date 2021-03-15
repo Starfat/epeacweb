@@ -1,0 +1,65 @@
+﻿@model IEnumerable<epeacweb.Models.ContactFormViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-light "><i class="fa fa-plus" aria-hidden="true"></i>
+         Create New
+    </a>
+</p>
+<table id="tblData" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fromEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.messageTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isRead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isCompleted)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fromEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.messageTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isRead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isCompleted)
+            </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-light" asp-route-id="@item.Id">
+                        <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a asp-action="Details" class="btn btn-light" asp-route-id="@item.Id">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                    <a asp-action="Delete" class="btn btn-light" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete the record')">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

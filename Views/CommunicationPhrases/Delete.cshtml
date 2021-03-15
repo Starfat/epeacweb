@@ -1,0 +1,34 @@
+﻿@model epeacweb.Models.CommunicationPhraseViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+<div>
+    <h4>CommunicationPhraseViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.phraseText)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.phraseText)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.phraseValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.phraseValue)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-light btn-block" /> |
+        <a asp-action="Index"class="btn btn-light btn-block">Back</a>
+    </form>
+	
+</div>

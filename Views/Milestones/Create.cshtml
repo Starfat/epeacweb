@@ -1,0 +1,53 @@
+﻿@model epeacweb.Models.MilestoneViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="taskId" class="control-label"></label>
+                <select asp-for="taskId" class ="form-control" asp-items="ViewBag.taskId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="milestoneName" class="control-label"></label>
+                <input asp-for="milestoneName" class="form-control" />
+                <span asp-validation-for="milestoneName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="milestoneDescription" class="control-label"></label>
+                <input asp-for="milestoneDescription" class="form-control" />
+                <span asp-validation-for="milestoneDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="milestoneDate" class="control-label"></label>
+                <input asp-for="milestoneDate" class="form-control" />
+                <span asp-validation-for="milestoneDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="milestoneAchieved" /> @Html.DisplayNameFor(model => model.milestoneAchieved)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PMAchievementComment" class="control-label"></label>
+                <input asp-for="PMAchievementComment" class="form-control" />
+                <span asp-validation-for="PMAchievementComment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-light btn-block" />
+            </div>
+        </form>
+        <a asp-action="Index" class="btn btn-light btn-block">Back</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

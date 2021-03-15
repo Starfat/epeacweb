@@ -1,0 +1,95 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - epeacweb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+
+                    <img src="~/images/navbar_logo.png" height="50" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">User registration</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role administration</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        CRUD
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item text-dark" asp-controller="AcheivementPhrases" asp-action="Index">AcheivementPhrases</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Departments" asp-action="Index">Departments</a>
+                                        <a class="dropdown-item text-dark" asp-controller="DepartmentManagers" asp-action="Index">DepartmentManagers</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Employees" asp-action="Index">Employees</a>
+                                        <a class="dropdown-item text-dark" asp-controller="EpeacUsers" asp-action="Index">EpeacUsers</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Faqs" asp-action="Index">FAQ</a>
+                                        <a class="dropdown-item text-dark" asp-controller="ProjectManagers" asp-action="Index">ProjectManagers</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Projects" asp-action="Index">Projects</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Tasks" asp-action="Index">Tasks</a>
+                                        <a class="dropdown-item text-dark" asp-controller="CommunicationPhrases" asp-action="Index">CommunicationPhrases</a>
+                                        <a class="dropdown-item text-dark" asp-controller="CooperationPhrases" asp-action="Index">CooperationPhrases</a>
+                                        <a class="dropdown-item text-dark" asp-controller="CreativityPhrases" asp-action="Index">CreativityPhrases</a>
+                                        <a class="dropdown-item text-dark" asp-controller="PunctualityPhrases" asp-action="Index">PunctualityPhrases</a>
+                                        <a class="dropdown-item text-dark" asp-controller="DrivePhrases" asp-action="Index">DrivePhrases</a>
+                                        <a class="dropdown-item text-dark" asp-controller="ContactForms" asp-action="Index">ContactForms</a>
+                                        <a class="dropdown-item text-dark" asp-controller="EmployeeProjectAttendances" asp-action="Index">Funker ikke - EmployeeProjectAttendances</a>
+                                        <a class="dropdown-item text-dark" asp-controller="ProjectRoles" asp-action="Index">ProjectRoles</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Milestones" asp-action="Index">Milestones</a>
+                                        <a class="dropdown-item text-dark" asp-controller="EmployeeTaskRatings" asp-action="Index">Funker ikke - EmployeeTaskRatings</a>
+
+
+
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Team 10
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

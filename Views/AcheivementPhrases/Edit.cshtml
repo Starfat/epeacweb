@@ -1,0 +1,35 @@
+﻿@model epeacweb.Models.AcheivementPhraseViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="phraseText" class="control-label"></label>
+                <input asp-for="phraseText" class="form-control" />
+                <span asp-validation-for="phraseText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phraseValue" class="control-label"></label>
+                <input asp-for="phraseValue" class="form-control" />
+                <span asp-validation-for="phraseValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-light btn-block" />
+            </div>
+            <a asp-action="Index" class="btn btn-light btn-block">Back</a>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

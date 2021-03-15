@@ -1,0 +1,83 @@
+﻿@model IEnumerable<epeacweb.Models.TaskViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-light "><i class="fa fa-plus" aria-hidden="true"></i>
+         Create New
+    </a>
+</p>
+<table id="tblData" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taskDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taskStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taskEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taskStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalRating)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taskDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taskStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taskEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taskStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalRating)
+            </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-light" asp-route-id="@item.Id">
+                        <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a asp-action="Details" class="btn btn-light" asp-route-id="@item.Id">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                    <a asp-action="Delete" class="btn btn-light" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete the record')">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+﻿@model epeacweb.Models.DepartmentViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="departmentName" class="control-label"></label>
+                <input asp-for="departmentName" class="form-control" />
+                <span asp-validation-for="departmentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="departmentDescription" class="control-label"></label>
+                <input asp-for="departmentDescription" class="form-control" />
+                <span asp-validation-for="departmentDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="departmentManagerId" class="control-label"></label>
+                <select asp-for="departmentManagerId" class ="form-control" asp-items="ViewBag.departmentManagerId"></select>
+            </div>
+              <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-light btn-block" />
+            </div>
+        </form>
+        <a asp-action="Index" class="btn btn-light btn-block">Back</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

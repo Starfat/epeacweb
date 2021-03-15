@@ -1,0 +1,47 @@
+﻿@model IEnumerable<epeacweb.Models.CreativityPhraseViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-light "><i class="fa fa-plus" aria-hidden="true"></i>
+         Create New
+    </a>
+</p>
+<table id="tblData" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.phraseText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phraseValue)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.phraseText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phraseValue)
+            </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-light" asp-route-id="@item.Id">
+                        <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a asp-action="Details" class="btn btn-light" asp-route-id="@item.Id">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                    <a asp-action="Delete" class="btn btn-light" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete the record')">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
